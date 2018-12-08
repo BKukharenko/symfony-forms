@@ -3,7 +3,6 @@
 
 namespace App\Form;
 
-
 use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,13 +18,11 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class PostType extends AbstractType
 {
+    protected $title;
 
-  protected $title;
-
-  public function buildForm(FormBuilderInterface $builder, array $options)
-  {
-
-    $builder
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
+        $builder
       ->add('title', TextType::class, array(
         'required' => true,
         'constraints' => array(new NotBlank())
@@ -48,12 +45,12 @@ class PostType extends AbstractType
         'label' => 'Create Post'
       ))
     ;
-  }
+    }
 
-  public function configureOptions(OptionsResolver $resolver)
-  {
-    $resolver->setDefaults(array(
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults(array(
       'data_class' => Post::class,
     ));
-  }
+    }
 }
