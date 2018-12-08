@@ -16,7 +16,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\NotBlank;
-use Symfony\Component\Validator\Constraints\NotNull;
 
 class PostType extends AbstractType
 {
@@ -29,8 +28,7 @@ class PostType extends AbstractType
     $builder
       ->add('title', TextType::class, array(
         'required' => true,
-        'constraints' => array(new NotBlank(),
-          new NotNull())
+        'constraints' => array(new NotBlank())
       ))
       ->add('image', FileType::class, array(
         'constraints' => array(new Image(array(

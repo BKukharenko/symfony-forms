@@ -3,6 +3,7 @@
 namespace App\Form;
 
 
+use App\Entity\Comment;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -50,7 +51,7 @@ class CommentType extends AbstractType {
   public function configureOptions(OptionsResolver $resolver)
   {
     $resolver->setDefaults(array(
-      'data_class' => PostType::class,
+      'data_class' => Comment::class,
     ));
   }
 

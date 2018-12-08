@@ -7,20 +7,20 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class PostController extends AbstractController
+class CommentController extends AbstractController
 {
     /**
-     * @Route("/post", name="post")
+     * @Route("/comment", name="comment")
      */
   public function post(Request $request)
   {
-    $post = null;
-    $form = $this->createForm(CommentType::class, $post);
+    $comment = null;
+    $form = $this->createForm(CommentType::class, $comment);
 
     $form->handleRequest($request);
 
     if ($form->isSubmitted() && $form->isValid()) {
-      $post = $form->getData();
+      $comment = $form->getData();
 
 
       return $this->redirectToRoute('comment_success');
