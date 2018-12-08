@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Post;
 use App\Form\PostType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -15,7 +16,7 @@ class FrontController extends AbstractController
    */
     public function index(Request $request)
     {
-        $post = null;
+        $post = new Post();
         $form = $this->createForm(PostType::class, $post);
 
         $form->handleRequest($request);

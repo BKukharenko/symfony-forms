@@ -4,6 +4,7 @@
 namespace App\Form;
 
 
+use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
@@ -15,6 +16,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Date;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\NotNull;
 
 class PostType extends AbstractType
 {
@@ -27,7 +29,8 @@ class PostType extends AbstractType
     $builder
       ->add('title', TextType::class, array(
         'required' => true,
-        'constraints' => array(new NotBlank())
+        'constraints' => array(new NotBlank(),
+          new NotNull())
       ))
       ->add('image', FileType::class, array(
         'constraints' => array(new Image(array(
@@ -52,7 +55,7 @@ class PostType extends AbstractType
   public function configureOptions(OptionsResolver $resolver)
   {
     $resolver->setDefaults(array(
-      'data_class' => PostType::class,
+      'data_class' => Post::class,
     ));
   }
 }
